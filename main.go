@@ -7,14 +7,17 @@ import (
 	"strconv"
 )
 
-var foos map[int]map[int]func()
-
-
-
+type category struct {
+	page     int
+	activity int
+}
 
 func main() {
+	fmt.Println("main")
 
+	foos := make(map[int]map[int]func())
 
+	foos[3] = make(map[int]func(), 0)
 	foos[3][1] = pg3.Factorial
 
 	args := os.Args
@@ -26,28 +29,33 @@ func main() {
 		return
 	}
 
-	var page int
-	if args_l == 2 {
-		page, err := strconv.Atoi(args[1])
+	var cat category
 
-		if err != nil {
-			fmt.Println("No page no given.")
-			return
-		}
+	if args_l == 2 {
+
+		fmt.Println("No activity no given.")
 
 	}
 
-	fmt.Printf("Page %d\n", page)
-
-	var activity int
-
 	if args_l == 3 {
-		activity, err = strconv.Atoi(args[2])
+		page_, err := strconv.Atoi(args[1])
+		cat.page = page_
+		fmt.Printf("Page %d\n", cat.page)
 
+		activity_, err := strconv.Atoi(args[2])
+		cat.activity = activity_
 		if err != nil {
-			fmt.Println("No activity no given.")
+			fmt.Println("No valid activity no given.")
 			return
 		}
+	}
+
+	if foos[cat.page] != nil && foos[cat.page][cat.activity] != nil {
+		foos[cat.page][cat.activity]()
+
+	} else {
+
+		fmt.Printf("No implementation for Page %d Activity %d \n", cat.page, cat.activity)
 	}
 
 }

@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"foodpanda-go-wk2/pg3"
 	"foodpanda-go-wk2/pg4"
+	"foodpanda-go-wk2/pg5"
+	"foodpanda-go-wk2/pg6"
+	"foodpanda-go-wk2/pg7"
 	"os"
 	"strconv"
 )
@@ -24,6 +27,15 @@ func main() {
 
 	foos[4] = make(map[int]func(), 0)
 	foos[4][1] = pg4.Games
+
+	foos[5] = make(map[int]func(), 0)
+	foos[5][1] = pg5.RunInterface
+
+	foos[6] = make(map[int]func(), 0)
+	foos[6][1] = pg6.RunBasicReflection
+
+	foos[7] = make(map[int]func(), 0)
+	foos[7][2] = pg7.RunStructReflection
 
 	args := os.Args
 	args_l := len(args)

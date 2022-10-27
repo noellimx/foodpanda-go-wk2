@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"foodpanda-go-wk2/pg3"
+	"foodpanda-go-wk2/pg4"
 	"os"
 	"strconv"
 )
@@ -20,6 +21,9 @@ func main() {
 	foos[3] = make(map[int]func(), 0)
 	foos[3][1] = pg3.Factorial
 	foos[3][2] = pg3.RunCustomer
+
+	foos[4] = make(map[int]func(), 0)
+	foos[4][1] = pg4.Games
 
 	args := os.Args
 	args_l := len(args)

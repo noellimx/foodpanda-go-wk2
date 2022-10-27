@@ -15,12 +15,12 @@ func Factorial() {
 		return
 	}
 
-	result := factorial(i)
+	result := factorial_(i)
 	fmt.Printf(" f(%d) = %d\n", i, result)
 
 }
 
-func factorial(i int) int {
+func factorial_(i int) int {
 	fmt.Printf("[Factorial]")
 
 	if i == 0 {
@@ -30,5 +30,5 @@ func factorial(i int) int {
 		return 1
 	}
 
-	return i * factorial(i-1)
+	return i * factorial_(i-1)
 }

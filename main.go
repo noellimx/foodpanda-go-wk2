@@ -19,6 +19,7 @@ func main() {
 
 	foos[3] = make(map[int]func(), 0)
 	foos[3][1] = pg3.Factorial
+	foos[3][2] = pg3.RunCustomer
 
 	args := os.Args
 	args_l := len(args)
@@ -40,14 +41,19 @@ func main() {
 	if args_l == 3 {
 		page_, err := strconv.Atoi(args[1])
 		cat.page = page_
-		fmt.Printf("Page %d\n", cat.page)
-
+		if err != nil {
+			fmt.Println("No valid page given.")
+			return
+		}
 		activity_, err := strconv.Atoi(args[2])
 		cat.activity = activity_
 		if err != nil {
-			fmt.Println("No valid activity no given.")
+			fmt.Println("No valid activity given.")
 			return
 		}
+
+		fmt.Printf("Page %d Activity %d\n", cat.page, cat.activity)
+
 	}
 
 	if foos[cat.page] != nil && foos[cat.page][cat.activity] != nil {
